@@ -125,6 +125,7 @@ class ImagePanel extends JPanel {
 
     ArrayIterator<String> ai = pathList.iterator();
       int found = 0;
+
     while(ai.hasNext()){
          String x1 ="";
         String x = ai.next();
@@ -132,9 +133,14 @@ class ImagePanel extends JPanel {
             found += 1;
         }
         if(x.contains("Castle")){
-            found += 1;
+            
+                found += 1;
+            
         }
+       
     }
+   
+    
     if(found==2){
         g2.setColor(Color.red);
     } else {
@@ -208,7 +214,7 @@ class ImagePanel extends JPanel {
     //Winterfell - CrossRoads
     ai = pathList.iterator();
      found = 0;
-    while(ai.hasNext()){
+    if(ai.hasNext()){
          String x1 ="";
         String x = ai.next();
         if(x.contains("Winterfell")){

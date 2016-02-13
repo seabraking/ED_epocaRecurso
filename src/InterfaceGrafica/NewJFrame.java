@@ -54,8 +54,6 @@ public class NewJFrame extends javax.swing.JFrame {
     ImagePanel panel = new ImagePanel(new ImageIcon("map.png").getImage());
     NetworkCidades network;
     Jogador jogador;
-    boolean eliminar = true;
-    boolean eliminar2 = true;
     Cidade segundaCidade=null;
     Cidade terceiraCidade=null;
     
@@ -840,11 +838,10 @@ Dijkstra mp = new Dijkstra();
     }
         DadosTrajeto c = null ;
         try {
-            if(eliminar){
+            if(segundaCidade!=null){
 
             inicioA.eliminarAdj(inicioA.getAdjIndex(segundaCidade));
-            //inicioA.eliminarAdj(1);
-            eliminar = false;
+
             }
            
             LinkedQueue<Cidade> lq = mp.apresenta_caminho_curto(inicioA, fimA);
@@ -925,15 +922,15 @@ Dijkstra mp = new Dijkstra();
         fimA = (Cidade) network.getVertices()[6];
     }
         DadosTrajeto c = null ;
+        System.out.println("D: " + segundaCidade);
         try {
-            if(eliminar2){
+            if(segundaCidade!=null){
+                System.out.println("D" + segundaCidade);
             inicioA.eliminarAdj(inicioA.getAdjIndex(segundaCidade));
             if(terceiraCidade!=null){
+                System.out.println("D" +segundaCidade);
             inicioA.eliminarAdj(inicioA.getAdjIndex(terceiraCidade));
             }
-            
-            //inicioA.eliminarAdj(1);
-            eliminar2=false;
             }
             LinkedQueue<Cidade> lq = mp.apresenta_caminho_curto(inicioA, fimA);
             panel.sendShorthestPath(lq,fimA.getMinDistance());
@@ -1046,6 +1043,7 @@ this.setSize(new Dimension(665, 675));
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
           // TODO add your handling code here:
         // resetGrafo();
+        
         if(a1.isSelected()){
             a1.setSelected(false);
         }
@@ -1053,6 +1051,7 @@ this.setSize(new Dimension(665, 675));
             atualizarGrafo3();
         } catch (ED_11_Parte1_Ex3.EmptyCollectionException ex) {
             Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("");
         }
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 

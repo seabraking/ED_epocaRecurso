@@ -43,7 +43,7 @@ private static int lastAdjVisited = 4;
                     double weight = 100*Math.pow((e.getCidadeDestino().getDefesa()/10),1.8);
                     
                     double distanceThroughU = u.getMinDistance() + weight + perdaCaminho;
-                    if (distanceThroughU < v.getMinDistance()) {
+                    if (distanceThroughU < v.getMinDistance()+ weight + perdaCaminho) {
                         //cidadesQueue.remove(v);
                             
                         v.setMinDistance(distanceThroughU);
